@@ -11,25 +11,45 @@
 
 // Pass in the id of the element containing the text that you want to deWidow.
 function deWidowText(eID)
+{
+  // Check to see if parameter was passed.
+  if(eID)
   {
-   // Break the sentence into an array of the individual words using the spaces as the delimiter. 
-    let stringArray = document.getElementById(eID).innerHTML.split(" ");
-    // Get the number of array elements.
-    let stringArrayLength = stringArray.length;
-
-    // Only do this for sentences with more than one word, otherwise you'll get a leading space.
-    if(stringArrayLength > 1)
+    // Ensure that elememt exists.
+    if(document.getElementById(eID))
     {
-      // Take the second to last word and combine it with a no-breaking space and the last word.
-      // Add indices if you want more than two words to appear on the last line.
-      stringArray[stringArrayLength - 2] += "&nbsp;" + stringArray[stringArrayLength - 1];
-      // Remove the last word which is now duplicated.
-      stringArray.pop();
-      // Recreate the string by joining the words with spaces in between. The last "word" will actually be the last two words with a no-breaking space.
-      newString = stringArray.join(" ");
-      // Update the text of the element with the new text.
-      // You could also choose to return the new string, if so desired.
-      // return newString;
-      document.getElementById(eID).innerHTML = newString;
+      // Break the sentence into an array of the individual words using the spaces as the delimiter. 
+      let stringArray = document.getElementById(eID).innerHTML.split(" ");
+      // Get the number of array elements.
+      let stringArrayLength = stringArray.length;
+
+      // Only do this for sentences with more than one word, otherwise you'll get a leading space.
+      if(stringArrayLength > 1)
+      {
+        // Take the second to last word and combine it with a no-breaking space and the last word.
+        // Add indices if you want more than two words to appear on the last line.
+        stringArray[stringArrayLength - 2] += "&nbsp;" + stringArray[stringArrayLength - 1];
+        // Remove the last word which is now duplicated.
+        stringArray.pop();
+        // Recreate the string by joining the words with spaces in between. The last "word" will actually be the last two words with a no-breaking space.
+        newString = stringArray.join(" ");
+        // Update the text of the element with the new text.
+        // You could also choose to return the new string, if so desired.
+        // return newString;
+        document.getElementById(eID).innerHTML = newString;
+      }
+    }
+    else
+    {
+      // Function failed because elements don't exist.
+      console.log("Error. Element doesn't exist.")
+      return false;     
     }
   }
+  else
+  {
+    // Function failed because paraments weren't passed.
+    console.log("Error. Parameter not passed.")
+    return false;
+  }
+}
