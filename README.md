@@ -7,4 +7,6 @@ The Quick Brown Fox Jumped over the Lazy<br />
 Dogs.<br />
 ...becomes...<br />
 The Quick  Brown Fox Jumped over the<br />
-Lazy Dogs.
+Lazy Dogs.<br />
+<br />
+This function requires that an id is attributed to the element wrapping the text in question. You will pass this id when calling the function.
